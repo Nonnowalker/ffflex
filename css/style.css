@@ -1,0 +1,2288 @@
+@charset "UTF-8";
+/** Variables **/
+/* N° colonne */
+/* Gutter, ossia margine orizzontale delle colonne */
+/*  Breakpoint
+
+4 di default:
+    lg - nessuna dimensione massima/minima
+    md - 992px di larghezza
+    sm - 768px di larghezza
+    xs - 320px di larghezza
+*/
+/*$lg: 1920px*/
+/* Dimensioni dei wrapper per i vari breakpoint */
+/* Fonts */
+/** Normalize e Reset **/
+body {
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
+  text-rendering: optimizeLegibility !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
+}
+
+.fff div > a,
+.fff p > a,
+.fff div > small,
+.fff p > small,
+.fff div > span,
+.fff p > span,
+.fff div > b,
+.fff p > b,
+.fff div > i,
+.fff p > i {
+  margin: 0 0.2em;
+  /* BREVE STORIA TRISTE: */
+  /* display: flex applicato al parent, automaticamente impone display: flex agli elementi child */
+  /* compresi gli elementi inline-block come ad esempio a, span, small etc. etc. */
+  /* che prendono automaticamente display: flex e non ci sono hack che tengono, display-flex rimangono. */
+  /* Problemone, perchè display:flex se ne frega degli spazi nel testo prima e dopo tali elementi*/
+  /* In questo modo gli elementi risultano appiccicati al testo precedente e seguente. */
+  /* Da qui l'esigenza di specificare questi margini. */
+  /* FINE */
+}
+
+/* FormHack v1.2.0 (formhack.io, github.com/ireade/formhack/blob/master/formhack.scss) */
+/* Global Reset Styles ------------------ */
+input,
+textarea,
+select,
+option,
+optgroup,
+button,
+legend,
+fieldset {
+  box-sizing: border-box;
+  outline: none;
+  font-family: "Raleway", sans-serif;
+  font-size: 16px;
+  color: #282828;
+  vertical-align: top;
+  display: block;
+  margin: 10px 0;
+}
+
+datalist {
+  font-family: "Raleway", sans-serif;
+  font-size: 16px;
+}
+
+label {
+  display: block;
+  margin: 10px 0;
+}
+
+/* Input & Textarea ------------------ */
+/* Fields with standard width */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+input[type="color"],
+input[type="date"],
+input[type="datetime-local"],
+input[type="month"],
+input[type="number"],
+input[type="tel"],
+input[type="time"],
+input[type="url"],
+input[type="week"],
+input[list],
+input[type="file"],
+select,
+textarea {
+  width: 100%;
+  max-width: 400px;
+  padding: 8px;
+  background-color: #fff;
+  border-radius: 5px;
+  border: 1px solid #c8c8c8;
+}
+
+/* Fields with standard height */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+input[type="color"],
+input[type="date"],
+input[type="datetime-local"],
+input[type="month"],
+input[type="number"],
+input[type="tel"],
+input[type="time"],
+input[type="url"],
+input[type="week"],
+input[list] {
+  height: 40px;
+  -webkit-appearance: none;
+}
+
+/* Other */
+textarea {
+  -webkit-appearance: none;
+  overflow: auto;
+}
+
+input[type="range"] {
+  height: 40px;
+  width: 100%;
+  max-width: 400px;
+}
+
+input[type="file"] {
+  min-height: 40px;
+}
+
+input[type="search"] {
+  height: 40px;
+  -webkit-appearance: none;
+}
+
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Select ------------------ */
+select {
+  height: 40px;
+}
+
+select[multiple] {
+  height: auto;
+  min-height: 40px;
+  padding: 0;
+}
+select[multiple] option {
+  margin: 0;
+  padding: 8px;
+}
+
+/* Fieldset ------------------ */
+fieldset {
+  padding: 10px 25px;
+  border-radius: 5px;
+  border: 1px solid #c8c8c8;
+}
+
+legend {
+  padding: 0 5px;
+  font-weight: 700;
+}
+
+/* Buttons, Input Type Submit/Reset ------------------ */
+button,
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+input[type="image"] {
+  height: 40px;
+  width: 100%;
+  max-width: 200px;
+  background-color: gainsboro;
+  padding: 8px;
+  cursor: pointer;
+  color: #282828;
+  font-weight: 700;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border-radius: 5px;
+  border: 1px solid #c8c8c8;
+}
+
+input[type="image"] {
+  text-align: center;
+  padding: 8px;
+}
+
+/* States ------------------ */
+input[disabled],
+textarea[disabled],
+select[disabled],
+option[disabled],
+button[disabled] {
+  cursor: not-allowed;
+}
+
+input:focus,
+textarea:focus,
+select:focus,
+option:focus,
+button:focus {
+  background-color: gainsboro;
+  border-color: #c8c8c8;
+}
+
+input[type="checkbox"]:focus,
+input[type="radio"]:focus {
+  outline: #c8c8c8 solid 2px;
+}
+
+button:hover,
+input[type="button"]:hover,
+input[type="submit"]:hover,
+input[type="reset"]:hover,
+button:focus,
+input[type="button"]:focus,
+input[type="submit"]:focus,
+input[type="reset"]:focus {
+  background-color: #c8c8c8;
+  color: #282828;
+}
+
+/** Framework **/
+/* Reset di base, da valutare l'uso di normalize */
+ul,
+menu,
+figure,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* Imposto la viewport. Ancora da valutare, interferisce con gli script che hanno a che fare con gli scroll e non sistema del tutto i problemi legati alle funzioni di scroll su mobile */
+/* Uso calc per "forzare" il calcolo in pixel della misura della viewport, cosa che su Safari iOS normalmente non avviene */
+/* Classe generale, definisce il comportamento flex dell'elemento root (body, main etc.) */
+/* Definisce inoltre un allineamento flex-based per qualsiasi elemento con classe c(colonna) o r(riga) */
+/* Di default flex-direction è impostato su row */
+.fff .r,
+.fff .c {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+/* Definisco la riga. Nessun clearfix o simili vista la mancanza di float. */
+.fff .r {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+/* Definisco una riga le cui colonne prendono il 100% di altezza */
+.fff .r-stretch {
+  -webkit-box-align: stretch;
+  -webkit-align-items: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+}
+
+/* Definisco una colonna. Padding di default */
+.fff .c {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  /* flex: 1 ovvero flex-grow: 1, flex-shrink: 1, flex-basis: 0. */
+  padding-right: 1em;
+  padding-left: 1em;
+  box-sizing: border-box;
+}
+
+/* Con questa classe le colonne si spartiscono uniformemente la larghezza disponibile. */
+/* Non ci sarà quindi bisogno di ulteriori classi e la larghezza della colonna sarà: 100% larghezza / n° colonne. */
+.fff .c-auto {
+  -webkit-box-flex: 0;
+  -webkit-flex: none;
+  -ms-flex: none;
+  flex: none;
+}
+
+/* Classi per l'allineamento verticale.  Da applicare ad un elemento parent (riga o colonna). Ha effetto su tutti gli elementi child */
+.fff .p-top {
+  -webkit-box-align: start;
+  -webkit-align-items: flex-start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+}
+
+.fff .p-bottom {
+  -webkit-box-align: end;
+  -webkit-align-items: flex-end;
+  -ms-flex-align: end;
+  align-items: flex-end;
+}
+
+.fff .p-middle {
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+/* Classi per l'allineamento orizzontale. Da applicare ad un elemento parent (riga o colonna). Ha effetto su tutti gli elementi child. NON funziona sui testi o elementi inline */
+.fff .p-left {
+  -webkit-box-pack: flex-start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: flex-start;
+  justify-content: flex-start;
+}
+
+.fff .p-right {
+  -webkit-box-pack: flex-end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: flex-end;
+  justify-content: flex-end;
+}
+
+.fff .p-center {
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.fff .p-dist-center {
+  -webkit-box-pack: space-between;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: space-between;
+  justify-content: space-between;
+}
+
+.fff .p-dist-space {
+  -webkit-box-pack: space-around;
+  -webkit-justify-content: space-around;
+  -ms-flex-pack: space-around;
+  justify-content: space-around;
+}
+
+/* Classi per l'allineamento verticale. Da applicare ad un singolo elemento child. Ha effetto solo sul singolo elemento. */
+.fff .s-top {
+  -webkit-align-self: flex-start;
+  -ms-flex-item-align: start;
+  align-self: flex-start;
+}
+
+.fff .s-bottom {
+  -webkit-align-self: flex-end;
+  -ms-flex-item-align: end;
+  align-self: flex-end;
+}
+
+.fff .s-middle {
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+}
+
+/* Definisco il wrapper interno. La larghezza effettiva, se diversa da 100%, viene impostata nei file dei singoli breakpoint. */
+.fff .w {
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* DA FARE:
+            struttura z-index PRIORITARIO (vedi homepage sil)
+            reset e variabile per V-margin/gutter
+            viewport bloccata (vedi esempio di Mauro su AK) DA RIVEDERE cfr poggionardone
+            utility class INIZIATO
+            struttura html di base con le varie dependancies
+            scripts di base tipo class toggler, slider con controlli, riscrittura elementi form, validazione forms etc.
+            implementare media queries specfiche per orientamento/altezza
+            */
+/* PROSSIMA RELEASE:
+            modello box tipo metro
+            classi per ordinamento delle colonne con flex-order
+            classi utility e reset per flex-growth/shrink/wrap/nowrap
+            */
+/* Hack per evitare lo slittamento laterale quando si apre il menu modale.
+Funziona su tutto tranne che safari IOS. 16px è la misura della scrollbar */
+html {
+  box-sizing: border-box;
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  display: block;
+  padding-right: 16px;
+}
+
+body {
+  width: 100vw;
+  height: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* Classe da assegnare al momento della visualizzazione di modali */
+html.active {
+  overflow-y: hidden;
+}
+
+body.active {
+  height: 100vh;
+  overflow-y: hidden;
+}
+
+/* Ordine inverso/reimposto ordine di default */
+.r-reverse {
+  flex-direction: row-reverse;
+}
+
+.c-reverse {
+  flex-direction: column-reverse;
+}
+
+/* Sostituzione testi con immagine di sfondo */
+.t-hide {
+  display: block;
+  text-indent: 150%;
+  /* In teoria 100%, ma abbondiamo per evitare errori dati da padding/margin */
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* Lista orizzontale */
+.t-hlist {
+  display: flex;
+  list-style: none;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Allineamenti testo e elementi inline */
+.t-center {
+  justify-content: center;
+  text-align: center;
+}
+
+.t-left {
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.t-right {
+  justify-content: flex-end;
+  text-align: right;
+}
+
+.t-justify {
+  justify-content: space-around;
+  text-align: justify;
+}
+
+/* Utility class per toggler */
+.active {
+  display: initial;
+}
+
+/* Modal con ::target */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+}
+
+.modal:target {
+  display: block;
+}
+
+/* Media query per i dispositivi che non prevedono il comportamento Hover */
+body {
+  font-size: 100%;
+}
+
+body, caption, th, td, input, textarea, select, option, legend, fieldset, h1, h2, h3, h4, h5, h6 {
+  font-size-adjust: 0.5;
+}
+
+body {
+  font-size: 1em;
+  /* equivalent to 16px */
+  line-height: 1.25;
+  /* equivalent to 20px */
+}
+
+/*@media (min-width: 43.75em) {*/
+/*body {*/
+/*font-size: 1em;*/
+/* equivalent to 16px */
+/*line-height: 1.375;*/
+/* equivalent to 22px */
+/*}*/
+/*}*/
+h1 {
+  font-size: 2em;
+  /* 2x body copy size = 32px */
+  line-height: 1.25;
+  /* 45px / 36px */
+}
+
+@media (min-width: 43.75em) {
+  h1 {
+    font-size: 2.5em;
+    /* 2.5x body copy size = 40px */
+    line-height: 1.125;
+  }
+}
+@media (min-width: 56.25em) {
+  h1 {
+    font-size: 3em;
+    /* 3x body copy size = 48px */
+    line-height: 1.05;
+    /* keep to a multiple of the 20px line height and something more appropriate for display headings */
+  }
+}
+h2 {
+  font-size: 1.625em;
+  /* 1.625x body copy size = 26px */
+  line-height: 1.15384615;
+  /* 30px / 26px */
+}
+
+@media (min-width: 43.75em) {
+  h2 {
+    font-size: 2em;
+    /* 2x body copy size = 32px */
+    line-height: 1.25;
+  }
+}
+@media (min-width: 56.25em) {
+  h2 {
+    font-size: 2.25em;
+    /* 2.25x body copy size = 36px */
+    line-height: 1.25;
+  }
+}
+h3 {
+  font-size: 1.375em;
+  /* 1.375x body copy size = 22px */
+  line-height: 1.13636364;
+  /* 25px / 22px */
+}
+
+@media (min-width: 43.75em) {
+  h3 {
+    font-size: 1.5em;
+    /* 1.5x body copy size = 24px */
+    line-height: 1.25;
+  }
+}
+@media (min-width: 56.25em) {
+  h3 {
+    font-size: 1.75em;
+    /* 1.75x body copy size = 28px */
+    line-height: 1.25;
+  }
+}
+h4 {
+  font-size: 1.125em;
+  /* 1.125x body copy size = 18px */
+  line-height: 1.11111111;
+}
+
+@media (min-width: 43.75em) {
+  h4 {
+    line-height: 1.22222222;
+    /* (22px / 18px */
+  }
+}
+blockquote {
+  font-size: 1.25em;
+  /* 20px / 16px */
+  line-height: 1.25;
+  /* 25px / 20px */
+}
+
+@media (min-width: 43.75em) {
+  blockquote {
+    font-size: 1.5em;
+    /* 24px / 16px = */
+    line-height: 1.45833333;
+    /* 35px / 24px */
+  }
+}
+/** Theme **/
+* {
+  font-family: 'Lato',sans-serif !important;
+  font-weight: 300;
+  color: #706259;
+}
+
+header {
+  background-color: rgba(112, 98, 89, 0.05);
+  border-bottom: 2px #706259 dashed;
+  padding: 3em 0;
+}
+
+h1 {
+  font-weight: 100;
+  font-size: 6em;
+  text-align: center;
+  margin-bottom: 0;
+  margin-top: 0;
+  flex-wrap: nowrap !important;
+  white-space: nowrap;
+  word-break: keep-all;
+}
+
+h1 b {
+  color: #082c40;
+  flex-wrap: nowrap;
+  font-weight: 400;
+}
+
+h2 {
+  font-weight: 300;
+  font-size: 3em;
+}
+
+header h2 {
+  font-size: 1em;
+  font-style: italic;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+nav {
+  background-color: #082c40;
+  background-image: url(../assets/bitbucket-icon.png);
+  background-position: left 0.8em center;
+  background-repeat: no-repeat;
+  background-size: auto 20px;
+  border-radius: 0.4em;
+  padding: 0.8em;
+  position: absolute;
+  left: 0.5em;
+  top: 0.5em;
+}
+
+nav:hover {
+  opacity: 0.75;
+}
+
+nav a {
+  color: #fff;
+  font-weight: 400;
+  margin-left: 1.6em;
+  text-decoration: none;
+}
+
+section {
+  margin-top: 3em;
+}
+
+section:last-of-type {
+  margin-bottom: 3em;
+}
+
+main article > div {
+  border: 2px rgba(0, 0, 0, 0.2) dashed;
+  border-radius: 0.33em;
+  background-color: rgba(0, 0, 0, 0.05);
+  font-size: 16px;
+  margin-bottom: 0.8em;
+  padding: 0.8em;
+  text-align: center;
+  width: 100%;
+}
+
+main article > div.r {
+  padding: 0.8em 0.8em 0;
+}
+
+main article > div::first-line {
+  font-weight: 400;
+}
+
+main article > div > div > div {
+  border: 2px rgba(0, 0, 0, 0.2) dashed;
+  border-radius: 0.33em;
+  background-color: rgba(0, 0, 0, 0.05);
+  font-size: 16px;
+  margin-bottom: 0.8em;
+  padding: 0.8em;
+  text-align: center;
+  width: 100%;
+  word-break: break-all;
+}
+
+main article > div > div > div::first-line {
+  font-weight: 400;
+}
+
+footer {
+  background-color: #082c40;
+  border-top: 2px #706259 dashed;
+  color: #fff !important;
+  margin-top: 3em;
+  padding: 3em 0;
+}
+
+footer a {
+  text-decoration: none;
+  font-weight: 400;
+}
+
+footer a {
+  text-decoration: underline;
+}
+
+/** Media Queries **/
+/* Definisco il wrapper. Di default coincide con il punto minimo del break point così da lasciare margini rispetto alla viewport */
+.fff .w {
+  max-width: 1280px;
+}
+
+/* Definisco la griglia. */
+  /* Valori flex di default:
+
+    flex-grow: 0; griglia fissa, impostare ad uno per griglia fluida
+    flex-shrink: 0; griglia fissa, impostare ad uno per griglia fluida
+    flex-basis: 8.33333333%; ossia 100% larghezza / 12 colonne, per una griglia con numero di colonne diverso modificare questo valore
+
+      ESEMPIO:
+
+      .fff .lg-1 {
+        -webkit-box-flex: 0;
+        -webkit-flex: 0 0 8.33333333%;
+        -ms-flex: 0 0 8.33333333%;
+        flex: 0 0 8.33333333%;
+      }
+
+  */
+.fff .lg-1 {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 8.33333%;
+  -ms-flex: 0 0 8.33333%;
+  flex: 0 0 8.33333%;
+}
+
+.fff .lg-2 {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 16.66667%;
+  -ms-flex: 0 0 16.66667%;
+  flex: 0 0 16.66667%;
+}
+
+.fff .lg-3 {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 25%;
+  -ms-flex: 0 0 25%;
+  flex: 0 0 25%;
+}
+
+.fff .lg-4 {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 33.33333%;
+  -ms-flex: 0 0 33.33333%;
+  flex: 0 0 33.33333%;
+}
+
+.fff .lg-5 {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 41.66667%;
+  -ms-flex: 0 0 41.66667%;
+  flex: 0 0 41.66667%;
+}
+
+.fff .lg-6 {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 50%;
+  -ms-flex: 0 0 50%;
+  flex: 0 0 50%;
+}
+
+.fff .lg-7 {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 58.33333%;
+  -ms-flex: 0 0 58.33333%;
+  flex: 0 0 58.33333%;
+}
+
+.fff .lg-8 {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 66.66667%;
+  -ms-flex: 0 0 66.66667%;
+  flex: 0 0 66.66667%;
+}
+
+.fff .lg-9 {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 75%;
+  -ms-flex: 0 0 75%;
+  flex: 0 0 75%;
+}
+
+.fff .lg-10 {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 83.33333%;
+  -ms-flex: 0 0 83.33333%;
+  flex: 0 0 83.33333%;
+}
+
+.fff .lg-11 {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 91.66667%;
+  -ms-flex: 0 0 91.66667%;
+  flex: 0 0 91.66667%;
+}
+
+.fff .lg-12 {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 100%;
+  -ms-flex: 0 0 100%;
+  flex: 0 0 100%;
+}
+
+/* Classi per lo spostamento delle colonne */
+/* .fff .lg-push-1 corrisponde al valore di flex-basis di .fff .lg-1 */
+  /* Spostamento verso destra
+
+  ESEMPIO:
+
+  .fff .lg-push-1 {
+    margin-left: 8.33333333%;
+  }
+
+  */
+.fff .lg-push-1 {
+  margin-left: 8.33333%;
+}
+
+.fff .lg-push-2 {
+  margin-left: 16.66667%;
+}
+
+.fff .lg-push-3 {
+  margin-left: 25%;
+}
+
+.fff .lg-push-4 {
+  margin-left: 33.33333%;
+}
+
+.fff .lg-push-5 {
+  margin-left: 41.66667%;
+}
+
+.fff .lg-push-6 {
+  margin-left: 50%;
+}
+
+.fff .lg-push-7 {
+  margin-left: 58.33333%;
+}
+
+.fff .lg-push-8 {
+  margin-left: 66.66667%;
+}
+
+.fff .lg-push-9 {
+  margin-left: 75%;
+}
+
+.fff .lg-push-10 {
+  margin-left: 83.33333%;
+}
+
+.fff .lg-push-11 {
+  margin-left: 91.66667%;
+}
+
+.fff .lg-push-12 {
+  margin-left: 100%;
+}
+
+  /* Spostamento verso sinistra
+
+  ESEMPIO:
+
+  .fff .lg-pull-1 {
+    margin-right: 8.33333333%;
+  }
+
+  */
+.fff .lg-pull-1 {
+  margin-right: 8.33333%;
+}
+
+.fff .lg-pull-2 {
+  margin-right: 16.66667%;
+}
+
+.fff .lg-pull-3 {
+  margin-right: 25%;
+}
+
+.fff .lg-pull-4 {
+  margin-right: 33.33333%;
+}
+
+.fff .lg-pull-5 {
+  margin-right: 41.66667%;
+}
+
+.fff .lg-pull-6 {
+  margin-right: 50%;
+}
+
+.fff .lg-pull-7 {
+  margin-right: 58.33333%;
+}
+
+.fff .lg-pull-8 {
+  margin-right: 66.66667%;
+}
+
+.fff .lg-pull-9 {
+  margin-right: 75%;
+}
+
+.fff .lg-pull-10 {
+  margin-right: 83.33333%;
+}
+
+.fff .lg-pull-11 {
+  margin-right: 91.66667%;
+}
+
+.fff .lg-pull-12 {
+  margin-right: 100%;
+}
+
+/* Utility per togliere i margini alle colonne */
+.fff .lg-1.no-gutter {
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+}
+
+.fff .lg-2.no-gutter {
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+}
+
+.fff .lg-3.no-gutter {
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+}
+
+.fff .lg-4.no-gutter {
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+}
+
+.fff .lg-5.no-gutter {
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+}
+
+.fff .lg-6.no-gutter {
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+}
+
+.fff .lg-7.no-gutter {
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+}
+
+.fff .lg-8.no-gutter {
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+}
+
+.fff .lg-9.no-gutter {
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+}
+
+.fff .lg-10.no-gutter {
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+}
+
+.fff .lg-11.no-gutter {
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+}
+
+.fff .lg-12.no-gutter {
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+}
+
+/* Per le immagini la max-width deve corrispondere alla flex-basis */
+.fff .sm-1 img {
+  max-width: 8.33333%;
+}
+
+.fff .sm-2 img {
+  max-width: 16.66667%;
+}
+
+.fff .sm-3 img {
+  max-width: 25%;
+}
+
+.fff .sm-4 img {
+  max-width: 33.33333%;
+}
+
+.fff .sm-5 img {
+  max-width: 41.66667%;
+}
+
+.fff .sm-6 img {
+  max-width: 50%;
+}
+
+.fff .sm-7 img {
+  max-width: 58.33333%;
+}
+
+.fff .sm-8 img {
+  max-width: 66.66667%;
+}
+
+.fff .sm-9 img {
+  max-width: 75%;
+}
+
+.fff .sm-10 img {
+  max-width: 83.33333%;
+}
+
+.fff .sm-11 img {
+  max-width: 91.66667%;
+}
+
+.fff .sm-12 img {
+  max-width: 100%;
+}
+
+/* Nascondo per questo breakpoint */
+.fff .lg-hidden {
+  display: none;
+}
+
+@media (max-width: 1152px) and (min-width: 992px) {
+  /* Definisco il wrapper. Di default coincide con il punto minimo del break point */
+  .fff .w {
+    max-width: 992px;
+  }
+
+  /* Definisco la griglia. */
+    /* Valori flex di default:
+
+      flex-grow: 0; griglia fissa, impostare ad uno per griglia fluida
+      flex-shrink: 0; griglia fissa, impostare ad uno per griglia fluida
+      flex-basis: 8.33333333%; ossia 100% larghezza / 12 colonne, per una griglia con numero di colonne diverso modificare questo valore
+
+        ESEMPIO:
+
+        .fff .lg-1 {
+          -webkit-box-flex: 0;
+          -webkit-flex: 0 0 8.33333333%;
+          -ms-flex: 0 0 8.33333333%;
+          flex: 0 0 8.33333333%;
+        }
+
+    */
+  .fff .md-1 {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 8.33333%;
+    -ms-flex: 0 0 8.33333%;
+    flex: 0 0 8.33333%;
+  }
+
+  .fff .md-2 {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 16.66667%;
+    -ms-flex: 0 0 16.66667%;
+    flex: 0 0 16.66667%;
+  }
+
+  .fff .md-3 {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 25%;
+    -ms-flex: 0 0 25%;
+    flex: 0 0 25%;
+  }
+
+  .fff .md-4 {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 33.33333%;
+    -ms-flex: 0 0 33.33333%;
+    flex: 0 0 33.33333%;
+  }
+
+  .fff .md-5 {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 41.66667%;
+    -ms-flex: 0 0 41.66667%;
+    flex: 0 0 41.66667%;
+  }
+
+  .fff .md-6 {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 50%;
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+  }
+
+  .fff .md-7 {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 58.33333%;
+    -ms-flex: 0 0 58.33333%;
+    flex: 0 0 58.33333%;
+  }
+
+  .fff .md-8 {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 66.66667%;
+    -ms-flex: 0 0 66.66667%;
+    flex: 0 0 66.66667%;
+  }
+
+  .fff .md-9 {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 75%;
+    -ms-flex: 0 0 75%;
+    flex: 0 0 75%;
+  }
+
+  .fff .md-10 {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 83.33333%;
+    -ms-flex: 0 0 83.33333%;
+    flex: 0 0 83.33333%;
+  }
+
+  .fff .md-11 {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 91.66667%;
+    -ms-flex: 0 0 91.66667%;
+    flex: 0 0 91.66667%;
+  }
+
+  .fff .md-12 {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 100%;
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+  }
+
+  /* Classi per lo spostamento delle colonne */
+  /* .fff .lg-push-1 corrisponde al valore di flex-basis di .fff .lg-1 */
+    /* Spostamento verso destra
+
+    ESEMPIO:
+
+    .fff .lg-push-1 {
+      margin-left: 8.33333333%;
+    }
+
+    */
+  .fff .md-push-1 {
+    margin-left: 8.33333%;
+  }
+
+  .fff .md-push-2 {
+    margin-left: 16.66667%;
+  }
+
+  .fff .md-push-3 {
+    margin-left: 25%;
+  }
+
+  .fff .md-push-4 {
+    margin-left: 33.33333%;
+  }
+
+  .fff .md-push-5 {
+    margin-left: 41.66667%;
+  }
+
+  .fff .md-push-6 {
+    margin-left: 50%;
+  }
+
+  .fff .md-push-7 {
+    margin-left: 58.33333%;
+  }
+
+  .fff .md-push-8 {
+    margin-left: 66.66667%;
+  }
+
+  .fff .md-push-9 {
+    margin-left: 75%;
+  }
+
+  .fff .md-push-10 {
+    margin-left: 83.33333%;
+  }
+
+  .fff .md-push-11 {
+    margin-left: 91.66667%;
+  }
+
+  .fff .md-push-12 {
+    margin-left: 100%;
+  }
+
+    /* Spostamento verso sinistra
+
+    ESEMPIO:
+
+    .fff .lg-pull-1 {
+      margin-right: 8.33333333%;
+    }
+
+    */
+  .fff .md-pull-1 {
+    margin-right: 8.33333%;
+  }
+
+  .fff .md-pull-2 {
+    margin-right: 16.66667%;
+  }
+
+  .fff .md-pull-3 {
+    margin-right: 25%;
+  }
+
+  .fff .md-pull-4 {
+    margin-right: 33.33333%;
+  }
+
+  .fff .md-pull-5 {
+    margin-right: 41.66667%;
+  }
+
+  .fff .md-pull-6 {
+    margin-right: 50%;
+  }
+
+  .fff .md-pull-7 {
+    margin-right: 58.33333%;
+  }
+
+  .fff .md-pull-8 {
+    margin-right: 66.66667%;
+  }
+
+  .fff .md-pull-9 {
+    margin-right: 75%;
+  }
+
+  .fff .md-pull-10 {
+    margin-right: 83.33333%;
+  }
+
+  .fff .md-pull-11 {
+    margin-right: 91.66667%;
+  }
+
+  .fff .md-pull-12 {
+    margin-right: 100%;
+  }
+
+  /* Utility per togliere i margini alle colonne */
+  .fff .md-1.no-gutter {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
+
+  .fff .md-2.no-gutter {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
+
+  .fff .md-3.no-gutter {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
+
+  .fff .md-4.no-gutter {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
+
+  .fff .md-5.no-gutter {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
+
+  .fff .md-6.no-gutter {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
+
+  .fff .md-7.no-gutter {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
+
+  .fff .md-8.no-gutter {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
+
+  .fff .md-9.no-gutter {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
+
+  .fff .md-10.no-gutter {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
+
+  .fff .md-11.no-gutter {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
+
+  .fff .md-12.no-gutter {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
+
+  /* Per le immagini la max-width deve corrispondere alla flex-basis */
+  .fff .md-1 img {
+    max-width: 8.33333%;
+  }
+
+  .fff .md-2 img {
+    max-width: 16.66667%;
+  }
+
+  .fff .md-3 img {
+    max-width: 25%;
+  }
+
+  .fff .md-4 img {
+    max-width: 33.33333%;
+  }
+
+  .fff .md-5 img {
+    max-width: 41.66667%;
+  }
+
+  .fff .md-6 img {
+    max-width: 50%;
+  }
+
+  .fff .md-7 img {
+    max-width: 58.33333%;
+  }
+
+  .fff .md-8 img {
+    max-width: 66.66667%;
+  }
+
+  .fff .md-9 img {
+    max-width: 75%;
+  }
+
+  .fff .md-10 img {
+    max-width: 83.33333%;
+  }
+
+  .fff .md-11 img {
+    max-width: 91.66667%;
+  }
+
+  .fff .md-12 img {
+    max-width: 100%;
+  }
+
+  /* Nascondo per questo breakpoint */
+  .fff .md-hidden {
+    display: none;
+  }
+}
+@media (max-width: 991px) and (min-width: 768px) {
+  /* Definisco il wrapper. Di default coincide con il punto minimo del break point */
+  .fff .w {
+    max-width: 768px;
+  }
+
+  /* Definisco la griglia. */
+    /* Valori flex di default:
+
+      flex-grow: 0; griglia fissa, impostare ad uno per griglia fluida
+      flex-shrink: 0; griglia fissa, impostare ad uno per griglia fluida
+      flex-basis: 8.33333333%; ossia 100% larghezza / 12 colonne, per una griglia con numero di colonne diverso modificare questo valore
+
+        ESEMPIO:
+
+        .fff .lg-1 {
+          -webkit-box-flex: 0;
+          -webkit-flex: 0 0 8.33333333%;
+          -ms-flex: 0 0 8.33333333%;
+          flex: 0 0 8.33333333%;
+        }
+
+    */
+  .fff .sm-1 {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 8.33333%;
+    -ms-flex: 0 0 8.33333%;
+    flex: 0 0 8.33333%;
+  }
+
+  .fff .sm-2 {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 16.66667%;
+    -ms-flex: 0 0 16.66667%;
+    flex: 0 0 16.66667%;
+  }
+
+  .fff .sm-3 {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 25%;
+    -ms-flex: 0 0 25%;
+    flex: 0 0 25%;
+  }
+
+  .fff .sm-4 {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 33.33333%;
+    -ms-flex: 0 0 33.33333%;
+    flex: 0 0 33.33333%;
+  }
+
+  .fff .sm-5 {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 41.66667%;
+    -ms-flex: 0 0 41.66667%;
+    flex: 0 0 41.66667%;
+  }
+
+  .fff .sm-6 {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 50%;
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+  }
+
+  .fff .sm-7 {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 58.33333%;
+    -ms-flex: 0 0 58.33333%;
+    flex: 0 0 58.33333%;
+  }
+
+  .fff .sm-8 {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 66.66667%;
+    -ms-flex: 0 0 66.66667%;
+    flex: 0 0 66.66667%;
+  }
+
+  .fff .sm-9 {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 75%;
+    -ms-flex: 0 0 75%;
+    flex: 0 0 75%;
+  }
+
+  .fff .sm-10 {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 83.33333%;
+    -ms-flex: 0 0 83.33333%;
+    flex: 0 0 83.33333%;
+  }
+
+  .fff .sm-11 {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 91.66667%;
+    -ms-flex: 0 0 91.66667%;
+    flex: 0 0 91.66667%;
+  }
+
+  .fff .sm-12 {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 100%;
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+  }
+
+  /* Classi per lo spostamento delle colonne */
+  /* .fff .lg-push-1 corrisponde al valore di flex-basis di .fff .lg-1 */
+    /* Spostamento verso destra
+
+    ESEMPIO:
+
+    .fff .lg-push-1 {
+      margin-left: 8.33333333%;
+    }
+
+    */
+  .fff .sm-push-1 {
+    margin-left: 8.33333%;
+  }
+
+  .fff .sm-push-2 {
+    margin-left: 16.66667%;
+  }
+
+  .fff .sm-push-3 {
+    margin-left: 25%;
+  }
+
+  .fff .sm-push-4 {
+    margin-left: 33.33333%;
+  }
+
+  .fff .sm-push-5 {
+    margin-left: 41.66667%;
+  }
+
+  .fff .sm-push-6 {
+    margin-left: 50%;
+  }
+
+  .fff .sm-push-7 {
+    margin-left: 58.33333%;
+  }
+
+  .fff .sm-push-8 {
+    margin-left: 66.66667%;
+  }
+
+  .fff .sm-push-9 {
+    margin-left: 75%;
+  }
+
+  .fff .sm-push-10 {
+    margin-left: 83.33333%;
+  }
+
+  .fff .sm-push-11 {
+    margin-left: 91.66667%;
+  }
+
+  .fff .sm-push-12 {
+    margin-left: 100%;
+  }
+
+    /* Spostamento verso sinistra
+
+    ESEMPIO:
+
+    .fff .lg-pull-1 {
+      margin-right: 8.33333333%;
+    }
+
+    */
+  .fff .sm-pull-1 {
+    margin-right: 8.33333%;
+  }
+
+  .fff .sm-pull-2 {
+    margin-right: 16.66667%;
+  }
+
+  .fff .sm-pull-3 {
+    margin-right: 25%;
+  }
+
+  .fff .sm-pull-4 {
+    margin-right: 33.33333%;
+  }
+
+  .fff .sm-pull-5 {
+    margin-right: 41.66667%;
+  }
+
+  .fff .sm-pull-6 {
+    margin-right: 50%;
+  }
+
+  .fff .sm-pull-7 {
+    margin-right: 58.33333%;
+  }
+
+  .fff .sm-pull-8 {
+    margin-right: 66.66667%;
+  }
+
+  .fff .sm-pull-9 {
+    margin-right: 75%;
+  }
+
+  .fff .sm-pull-10 {
+    margin-right: 83.33333%;
+  }
+
+  .fff .sm-pull-11 {
+    margin-right: 91.66667%;
+  }
+
+  .fff .sm-pull-12 {
+    margin-right: 100%;
+  }
+
+  /* Utility per togliere i margini alle colonne */
+  .fff .sm-1.no-gutter {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
+
+  .fff .sm-2.no-gutter {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
+
+  .fff .sm-3.no-gutter {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
+
+  .fff .sm-4.no-gutter {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
+
+  .fff .sm-5.no-gutter {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
+
+  .fff .sm-6.no-gutter {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
+
+  .fff .sm-7.no-gutter {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
+
+  .fff .sm-8.no-gutter {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
+
+  .fff .sm-9.no-gutter {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
+
+  .fff .sm-10.no-gutter {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
+
+  .fff .sm-11.no-gutter {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
+
+  .fff .sm-12.no-gutter {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
+
+  /* Per le immagini la max-width deve corrispondere alla flex-basis */
+  .fff .sm-1 img {
+    max-width: 8.33333%;
+  }
+
+  .fff .sm-2 img {
+    max-width: 16.66667%;
+  }
+
+  .fff .sm-3 img {
+    max-width: 25%;
+  }
+
+  .fff .sm-4 img {
+    max-width: 33.33333%;
+  }
+
+  .fff .sm-5 img {
+    max-width: 41.66667%;
+  }
+
+  .fff .sm-6 img {
+    max-width: 50%;
+  }
+
+  .fff .sm-7 img {
+    max-width: 58.33333%;
+  }
+
+  .fff .sm-8 img {
+    max-width: 66.66667%;
+  }
+
+  .fff .sm-9 img {
+    max-width: 75%;
+  }
+
+  .fff .sm-10 img {
+    max-width: 83.33333%;
+  }
+
+  .fff .sm-11 img {
+    max-width: 91.66667%;
+  }
+
+  .fff .sm-12 img {
+    max-width: 100%;
+  }
+
+  /* Nascondo per questo breakpoint */
+  .fff .sm-hidden {
+    display: none;
+  }
+}
+@media (max-width: 767px) {
+  /* Definisco il wrapper. Di default coincide con il punto minimo del break point */
+  .fff .w {
+    max-width: none;
+  }
+
+  /* Definisco la griglia. */
+    /* Valori flex di default:
+
+      flex-grow: 0; griglia fissa, impostare ad uno per griglia fluida
+      flex-shrink: 0; griglia fissa, impostare ad uno per griglia fluida
+      flex-basis: 8.33333333%; ossia 100% larghezza / 12 colonne, per una griglia con numero di colonne diverso modificare questo valore
+
+        ESEMPIO:
+
+        .fff .lg-1 {
+          -webkit-box-flex: 0;
+          -webkit-flex: 0 0 8.33333333%;
+          -ms-flex: 0 0 8.33333333%;
+          flex: 0 0 8.33333333%;
+        }
+
+    */
+  .fff .xs-1 {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 8.33333%;
+    -ms-flex: 0 0 8.33333%;
+    flex: 0 0 8.33333%;
+  }
+
+  .fff .xs-2 {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 16.66667%;
+    -ms-flex: 0 0 16.66667%;
+    flex: 0 0 16.66667%;
+  }
+
+  .fff .xs-3 {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 25%;
+    -ms-flex: 0 0 25%;
+    flex: 0 0 25%;
+  }
+
+  .fff .xs-4 {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 33.33333%;
+    -ms-flex: 0 0 33.33333%;
+    flex: 0 0 33.33333%;
+  }
+
+  .fff .xs-5 {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 41.66667%;
+    -ms-flex: 0 0 41.66667%;
+    flex: 0 0 41.66667%;
+  }
+
+  .fff .xs-6 {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 50%;
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+  }
+
+  .fff .xs-7 {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 58.33333%;
+    -ms-flex: 0 0 58.33333%;
+    flex: 0 0 58.33333%;
+  }
+
+  .fff .xs-8 {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 66.66667%;
+    -ms-flex: 0 0 66.66667%;
+    flex: 0 0 66.66667%;
+  }
+
+  .fff .xs-9 {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 75%;
+    -ms-flex: 0 0 75%;
+    flex: 0 0 75%;
+  }
+
+  .fff .xs-10 {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 83.33333%;
+    -ms-flex: 0 0 83.33333%;
+    flex: 0 0 83.33333%;
+  }
+
+  .fff .xs-11 {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 91.66667%;
+    -ms-flex: 0 0 91.66667%;
+    flex: 0 0 91.66667%;
+  }
+
+  .fff .xs-12 {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 100%;
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+  }
+
+  /* Classi per lo spostamento delle colonne */
+  /* .fff .lg-push-1 corrisponde al valore di flex-basis di .fff .lg-1 */
+    /* Spostamento verso destra
+
+    ESEMPIO:
+
+    .fff .lg-push-1 {
+      margin-left: 8.33333333%;
+    }
+
+    */
+  .fff .xs-push-1 {
+    margin-left: 8.33333%;
+  }
+
+  .fff .xs-push-2 {
+    margin-left: 16.66667%;
+  }
+
+  .fff .xs-push-3 {
+    margin-left: 25%;
+  }
+
+  .fff .xs-push-4 {
+    margin-left: 33.33333%;
+  }
+
+  .fff .xs-push-5 {
+    margin-left: 41.66667%;
+  }
+
+  .fff .xs-push-6 {
+    margin-left: 50%;
+  }
+
+  .fff .xs-push-7 {
+    margin-left: 58.33333%;
+  }
+
+  .fff .xs-push-8 {
+    margin-left: 66.66667%;
+  }
+
+  .fff .xs-push-9 {
+    margin-left: 75%;
+  }
+
+  .fff .xs-push-10 {
+    margin-left: 83.33333%;
+  }
+
+  .fff .xs-push-11 {
+    margin-left: 91.66667%;
+  }
+
+  .fff .xs-push-12 {
+    margin-left: 100%;
+  }
+
+    /* Spostamento verso sinistra
+
+    ESEMPIO:
+
+    .fff .lg-pull-1 {
+      margin-right: 8.33333333%;
+    }
+
+    */
+  .fff .xs-pull-1 {
+    margin-right: 8.33333%;
+  }
+
+  .fff .xs-pull-2 {
+    margin-right: 16.66667%;
+  }
+
+  .fff .xs-pull-3 {
+    margin-right: 25%;
+  }
+
+  .fff .xs-pull-4 {
+    margin-right: 33.33333%;
+  }
+
+  .fff .xs-pull-5 {
+    margin-right: 41.66667%;
+  }
+
+  .fff .xs-pull-6 {
+    margin-right: 50%;
+  }
+
+  .fff .xs-pull-7 {
+    margin-right: 58.33333%;
+  }
+
+  .fff .xs-pull-8 {
+    margin-right: 66.66667%;
+  }
+
+  .fff .xs-pull-9 {
+    margin-right: 75%;
+  }
+
+  .fff .xs-pull-10 {
+    margin-right: 83.33333%;
+  }
+
+  .fff .xs-pull-11 {
+    margin-right: 91.66667%;
+  }
+
+  .fff .xs-pull-12 {
+    margin-right: 100%;
+  }
+
+  /* Utility per togliere i margini alle colonne */
+  .fff .xs-1.no-gutter {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
+
+  .fff .xs-2.no-gutter {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
+
+  .fff .xs-3.no-gutter {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
+
+  .fff .xs-4.no-gutter {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
+
+  .fff .xs-5.no-gutter {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
+
+  .fff .xs-6.no-gutter {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
+
+  .fff .xs-7.no-gutter {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
+
+  .fff .xs-8.no-gutter {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
+
+  .fff .xs-9.no-gutter {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
+
+  .fff .xs-10.no-gutter {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
+
+  .fff .xs-11.no-gutter {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
+
+  .fff .xs-12.no-gutter {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
+
+  /* Per le immagini la max-width deve corrispondere alla flex-basis */
+  .fff .xs-1 img {
+    max-width: 8.33333%;
+  }
+
+  .fff .xs-2 img {
+    max-width: 16.66667%;
+  }
+
+  .fff .xs-3 img {
+    max-width: 25%;
+  }
+
+  .fff .xs-4 img {
+    max-width: 33.33333%;
+  }
+
+  .fff .xs-5 img {
+    max-width: 41.66667%;
+  }
+
+  .fff .xs-6 img {
+    max-width: 50%;
+  }
+
+  .fff .xs-7 img {
+    max-width: 58.33333%;
+  }
+
+  .fff .xs-8 img {
+    max-width: 66.66667%;
+  }
+
+  .fff .xs-9 img {
+    max-width: 75%;
+  }
+
+  .fff .xs-10 img {
+    max-width: 83.33333%;
+  }
+
+  .fff .xs-11 img {
+    max-width: 91.66667%;
+  }
+
+  .fff .xs-12 img {
+    max-width: 100%;
+  }
+
+  /* Nascondo per questo breakpoint */
+  .fff .xs-hidden {
+    display: none;
+  }
+}
+/** Hacks & Fixes **/
+/* Definisco una max width per la griglia in modo da bypassare il bug di IE10/11 in cui
+a display: flex; corrisponde per forza un box-sizing: content; degli elementi child */
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  .fff .lg-1 {
+    max-width: 8.33333%;
+  }
+
+  .fff .lg-2 {
+    max-width: 16.66667%;
+  }
+
+  .fff .lg-3 {
+    max-width: 25%;
+  }
+
+  .fff .lg-4 {
+    max-width: 33.33333%;
+  }
+
+  .fff .lg-5 {
+    max-width: 41.66667%;
+  }
+
+  .fff .lg-6 {
+    max-width: 50%;
+  }
+
+  .fff .lg-7 {
+    max-width: 58.33333%;
+  }
+
+  .fff .lg-8 {
+    max-width: 66.66667%;
+  }
+
+  .fff .lg-9 {
+    max-width: 75%;
+  }
+
+  .fff .lg-10 {
+    max-width: 83.33333%;
+  }
+
+  .fff .lg-11 {
+    max-width: 91.66667%;
+  }
+
+  .fff .lg-12 {
+    max-width: 100%;
+  }
+}
+@media all and (max-width: 1152px) and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  .fff .md-1 {
+    max-width: 8.33333%;
+  }
+
+  .fff .md-2 {
+    max-width: 16.66667%;
+  }
+
+  .fff .md-3 {
+    max-width: 25%;
+  }
+
+  .fff .md-4 {
+    max-width: 33.33333%;
+  }
+
+  .fff .md-5 {
+    max-width: 41.66667%;
+  }
+
+  .fff .md-6 {
+    max-width: 50%;
+  }
+
+  .fff .md-7 {
+    max-width: 58.33333%;
+  }
+
+  .fff .md-8 {
+    max-width: 66.66667%;
+  }
+
+  .fff .md-9 {
+    max-width: 75%;
+  }
+
+  .fff .md-10 {
+    max-width: 83.33333%;
+  }
+
+  .fff .md-11 {
+    max-width: 91.66667%;
+  }
+
+  .fff .md-12 {
+    max-width: 100%;
+  }
+}
+@media all and (max-width: 991px) and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  .fff .sm-1 {
+    max-width: 8.33333%;
+  }
+
+  .fff .sm-2 {
+    max-width: 16.66667%;
+  }
+
+  .fff .sm-3 {
+    max-width: 25%;
+  }
+
+  .fff .sm-4 {
+    max-width: 33.33333%;
+  }
+
+  .fff .sm-5 {
+    max-width: 41.66667%;
+  }
+
+  .fff .sm-6 {
+    max-width: 50%;
+  }
+
+  .fff .sm-7 {
+    max-width: 58.33333%;
+  }
+
+  .fff .sm-8 {
+    max-width: 66.66667%;
+  }
+
+  .fff .sm-9 {
+    max-width: 75%;
+  }
+
+  .fff .sm-10 {
+    max-width: 83.33333%;
+  }
+
+  .fff .sm-11 {
+    max-width: 91.66667%;
+  }
+
+  .fff .sm-12 {
+    max-width: 100%;
+  }
+}
+@media all and (max-width: 767px) and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  .fff .xs-1 {
+    max-width: 8.33333%;
+  }
+
+  .fff .xs-2 {
+    max-width: 16.66667%;
+  }
+
+  .fff .xs-3 {
+    max-width: 25%;
+  }
+
+  .fff .xs-4 {
+    max-width: 33.33333%;
+  }
+
+  .fff .xs-5 {
+    max-width: 41.66667%;
+  }
+
+  .fff .xs-6 {
+    max-width: 50%;
+  }
+
+  .fff .xs-7 {
+    max-width: 58.33333%;
+  }
+
+  .fff .xs-8 {
+    max-width: 66.66667%;
+  }
+
+  .fff .xs-9 {
+    max-width: 75%;
+  }
+
+  .fff .xs-10 {
+    max-width: 83.33333%;
+  }
+
+  .fff .xs-11 {
+    max-width: 91.66667%;
+  }
+
+  .fff .xs-12 {
+    max-width: 100%;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */

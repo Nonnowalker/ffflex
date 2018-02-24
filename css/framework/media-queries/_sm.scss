@@ -1,0 +1,100 @@
+@media (max-width: $sm) and (min-width: $xs + 1 ) {
+
+    /* Definisco il wrapper. Di default coincide con il punto minimo del break point */
+    .fff .w {
+      max-width: $sm-w;
+    }
+
+    /* Definisco la griglia. */
+    /* Valori flex di default:
+
+      flex-grow: 0; griglia fissa, impostare ad uno per griglia fluida
+      flex-shrink: 0; griglia fissa, impostare ad uno per griglia fluida
+      flex-basis: 8.33333333%; ossia 100% larghezza / 12 colonne, per una griglia con numero di colonne diverso modificare questo valore
+
+        ESEMPIO:
+
+        .fff .lg-1 {
+          -webkit-box-flex: 0;
+          -webkit-flex: 0 0 8.33333333%;
+          -ms-flex: 0 0 8.33333333%;
+          flex: 0 0 8.33333333%;
+        }
+
+    */
+
+    @for $i from 1 through $columns {
+
+      .fff .sm-#{$i} {
+        -webkit-box-flex: 0;
+        -webkit-flex: 0 0 100% / $columns * $i;
+        -ms-flex: 0 0 100% / $columns * $i;
+        flex: 0 0 100% / $columns * $i;
+      }
+
+    }
+
+    /* Classi per lo spostamento delle colonne */
+    /* .fff .lg-push-1 corrisponde al valore di flex-basis di .fff .lg-1 */
+
+    /* Spostamento verso destra
+
+    ESEMPIO:
+
+    .fff .lg-push-1 {
+      margin-left: 8.33333333%;
+    }
+
+    */
+
+    @for $i from 1 through $columns {
+
+      .fff .sm-push-#{$i} {
+        margin-left: 100% / $columns * $i;
+      }
+
+    }
+
+    /* Spostamento verso sinistra
+
+    ESEMPIO:
+
+    .fff .lg-pull-1 {
+      margin-right: 8.33333333%;
+    }
+
+    */
+
+    @for $i from 1 through $columns {
+
+      .fff .sm-pull-#{$i} {
+        margin-right: 100% / $columns * $i;
+      }
+
+    }
+
+    /* Utility per togliere i margini alle colonne */
+    @for $i from 1 through $columns {
+
+      .fff .sm-#{$i}.no-gutter {
+        padding-right: 0 !important;
+        padding-left: 0 !important;
+      }
+
+    }
+
+    /* Per le immagini la max-width deve corrispondere alla flex-basis */
+    @for $i from 1 through $columns {
+
+      .fff .sm-#{$i} img {
+        max-width: 100% / $columns * $i;
+      }
+
+    }
+
+    /* Nascondo per questo breakpoint */
+    .fff .sm-hidden {
+      display: none;
+    }
+
+  }

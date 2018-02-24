@@ -1,0 +1,29 @@
+/* N° colonne */
+$columns: 12;
+
+/* Gutter, ossia margine orizzontale delle colonne */
+$gutter: 1em;
+
+/*  Breakpoint
+
+4 di default:
+    lg - nessuna dimensione massima/minima
+    md - 992px di larghezza
+    sm - 768px di larghezza
+    xs - 320px di larghezza
+*/
+
+/*$lg: 1920px*/
+$md: 1152px;
+$sm: 991px;
+$xs: 767px;
+
+/* Dimensioni dei wrapper per i vari breakpoint */
+$lg-w: 1280px;
+$md-w: 992px;
+$sm-w: 768px;
+$xs-w: none;
+
+/* Fonts */
+$f-heading: 'adobe-garamond-pro', serif;
+$f-body: 'minion-pro', serif;

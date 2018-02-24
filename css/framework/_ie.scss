@@ -1,0 +1,47 @@
+/* Definisco una max width per la griglia in modo da bypassare il bug di IE10/11 in cui
+a display: flex; corrisponde per forza un box-sizing: content; degli elementi child */
+
+@mixin c-max-width {
+  @for $i from 1 through 12 {
+    .fff .lg-#{$i} {
+      max-width: 100% / 12 * $i;
+    }
+  }
+}
+@mixin c-max-width-md {
+  @for $i from 1 through 12 {
+    .fff .md-#{$i} {
+      max-width: 100% / 12 * $i;
+    }
+  }
+}
+@mixin c-max-width-sm {
+  @for $i from 1 through 12 {
+    .fff .sm-#{$i} {
+      max-width: 100% / 12 * $i;
+    }
+  }
+}
+@mixin c-max-width-xs {
+  @for $i from 1 through 12 {
+    .fff .xs-#{$i} {
+      max-width: 100% / 12 * $i;
+    }
+  }
+}
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  @include c-max-width;
+}
+
+@media all and (max-width: $md) and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  @include c-max-width-md;
+}
+
+@media all and (max-width: $sm) and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  @include c-max-width-sm;
+}
+
+@media all and (max-width: $xs) and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  @include c-max-width-xs;
+}

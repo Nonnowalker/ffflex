@@ -1,0 +1,31 @@
+body {
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
+  text-rendering: optimizeLegibility !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale;
+
+  margin: 0;
+  padding: 0;
+
+}
+
+.fff div > a,
+.fff p > a,
+.fff div > small,
+.fff p > small,
+.fff div > span,
+.fff p > span,
+.fff div > b,
+.fff p > b,
+.fff div > i,
+.fff p > i {
+  margin: 0 0.2em;
+  /* BREVE STORIA TRISTE: */
+  /* display: flex applicato al parent, automaticamente impone display: flex agli elementi child */
+  /* compresi gli elementi inline-block come ad esempio a, span, small etc. etc. */
+  /* che prendono automaticamente display: flex e non ci sono hack che tengono, display-flex rimangono. */
+  /* Problemone, perchè display:flex se ne frega degli spazi nel testo prima e dopo tali elementi*/
+  /* In questo modo gli elementi risultano appiccicati al testo precedente e seguente. */
+  /* Da qui l'esigenza di specificare questi margini. */
+  /* FINE */
+}
